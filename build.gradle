@@ -1,0 +1,27 @@
+plugins {
+    id 'groovy'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("21")
+    targetCompatibility = JavaVersion.toVersion("21")
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(localGroovy())
+    implementation('org.ccil.cowan.tagsoup:tagsoup:1.2')
+}
+
+tasks.register('runScript', JavaExec) {
+    group = 'application'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'groovy.ui.GroovyMain'
+    args = ['src/main/groovy/shoppingList.groovy']
+}
