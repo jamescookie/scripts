@@ -24,7 +24,7 @@ htmlParser.'**'
         .forEach {
             if (it) it.replaceNode { '' }
         }
-new File('build', 'list.html').newWriter().withWriter { w ->
+new File('list.html').newWriter().withWriter { w ->
     w << XmlUtil.serialize(htmlParser)
             .replaceAll('tag0:', '')
             .replaceAll('class=".*?"', '')
